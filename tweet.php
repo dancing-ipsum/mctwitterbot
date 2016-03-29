@@ -3,6 +3,7 @@
 $server_IP              = "play.avengetech.net";
 $server_Port            = "19132";
 # You probably shouldn't touch these variables. Move along!
+# See that /mcpe at the end of the query URL? Change that to /info if you're querying a PC server.
 $query_JSON             = json_decode(file_get_contents("https://mcapi.ca/query/$server_IP:$server_Port/mcpe"), true);
 $query_OnlineStatus     = $query_JSON["status"];
 $query_ServerVersion    = $query_JSON["version"];
