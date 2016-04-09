@@ -1,34 +1,51 @@
 <?php
-# Input your server IP and port :)
-$server_IP              = "play.avengetech.net";
-$server_Port            = "19132";
-# You probably shouldn't touch these variables. Move along!
-# See that /mcpe at the end of the query URL? Change that to /info if you're querying a PC server.
-$query_JSON             = json_decode(file_get_contents("https://mcapi.ca/query/$server_IP:$server_Port/mcpe"), true);
-$query_OnlineStatus     = $query_JSON["status"];
-$query_ServerVersion    = $query_JSON["version"];
-$query_OnlinePlayers    = $query_JSON["players"]["online"];
-$query_MaxPlayers       = $query_JSON["players"]["max"];
-# Twitter API Tokens
-$your_ConsumerKey       = "blank";
-$your_ConsumerSecret    = "blank";
-$your_AccessToken       = "blank";
-$your_AccessTokenSecret = "blank";
-# Tweets
-if ($query_OnlineStatus == TRUE) {
-    # YAY! Your server is online! Tweet about it :)
-    $your_Tweet = "Connected Players\n$query_OnlinePlayers/$query_MaxPlayers\n\nVersion\n$query_ServerVersion";
+$config      = include('config.php');
+$password    = $config["password"];
+$server_ip   = $config["server_ip"];
+$server_port = $config["server_port"];
+if ($_GET["password"] == $password) {
+    $mcpe = $config["mcpe"];
+    if ($mcpe == true) {
+        $query                       = json_decode(file_get_contents("https://mcapi.ca/query/$server_ip:$server_port/mcpe"), true);
+        $query_status                = $query["status"];
+        $query_error                 = $query["error"];
+        $query_version               = $query["version"];
+        $query_players_online        = $query["players"]["online"];
+        $query_players_online_commas = number_format($query_players_online);
+        $query_players_max           = $query["players"]["max"];
+        $query_players_max_commas    = number_format($query_players_max);
+    } else {
+        $query                       = json_decode(file_get_contents("https://mcapi.ca/query/$server_ip:$server_port/info"), true);
+        $query_status                = $query["status"];
+        $query_error                 = $query["error"];
+        $query_motd                  = $query["motd"];
+        $query_version               = $query["version"];
+        $query_players_online        = $query["players"]["online"];
+        $query_players_online_commas = number_format($query_players_online);
+        $query_players_max           = $query["players"]["max"];
+        $query_players_max_commas    = number_format($query_players_max);
+        $query_ping                  = $query["ping"];
+        $query_cache                 = $query["cache"];
+    }
+    $twitter_consumer_key        = $config["twitter_consumer_key"];
+    $twitter_consumer_secret     = $config["twitter_consumer_secret"];
+    $twitter_access_token        = $config["twitter_access_token"];
+    $twitter_access_token_secret = $config["twitter_access_token_secret"];
+    
+    if ($query_status == TRUE) {
+        $twitter_update = "Online Players:\n$query_players_online_commas/$query_players_max_commas";
+    } else {
+        $twitter_update = $query_error;
+    }
+    require_once('codebird/codebird.php');
+    \Codebird\Codebird::setConsumerKey("$twitter_consumer_key", "$twitter_consumer_secret");
+    $cb = \Codebird\Codebird::getInstance();
+    $cb->setToken("$twitter_access_token", "$twitter_access_token_secret");
+    $params = array(
+        'status' => "$twitter_update"
+    );
+    $reply  = $cb->statuses_update($params);
 } else {
-    # The script is having trouble querying your server. Tweet about it :(
-    $your_Tweet = "Server is offline or unreachable.";
+    echo "Invalid Password";
 }
-# UNLESS YOU KNOW WHAT YOU'RE DOING - DON'T EDIT ANYTHING BELOW THIS LINE! #
-require_once('codebird/codebird.php');
-\Codebird\Codebird::setConsumerKey("$your_ConsumerKey", "$your_ConsumerSecret");
-$cb = \Codebird\Codebird::getInstance();
-$cb->setToken("$your_AccessToken", "$your_AccessTokenSecret");
-$params = array(
-    'status' => "$your_Tweet"
-);
-$reply  = $cb->statuses_update($params);
 ?>

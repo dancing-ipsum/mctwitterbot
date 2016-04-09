@@ -6,10 +6,10 @@ namespace Codebird;
  * A Twitter library in PHP.
  *
  * @package   codebird
- * @version   3.0.0-dev
+ * @version   3.1.0
  * @author    Jublo Solutions <support@jublo.net>
- * @copyright 2010-2015 Jublo Solutions <support@jublo.net>
- * @license   http://opensource.org/licenses/GPL-3.0 GNU General Public License 3.0
+ * @copyright 2010-2016 Jublo Solutions <support@jublo.net>
+ * @license   https://opensource.org/licenses/GPL-3.0 GNU General Public License 3.0
  * @link      https://github.com/jublonet/codebird-php
  */
 
@@ -91,6 +91,7 @@ class Codebird
       'account/verify_credentials',
       'ads/accounts',
       'ads/accounts/:account_id',
+      'ads/accounts/:account_id/account_media',
       'ads/accounts/:account_id/app_event_provider_configurations',
       'ads/accounts/:account_id/app_event_provider_configurations/:id',
       'ads/accounts/:account_id/app_event_tags',
@@ -118,6 +119,8 @@ class Codebird
       'ads/accounts/:account_id/funding_instruments/:id',
       'ads/accounts/:account_id/line_items',
       'ads/accounts/:account_id/line_items/:line_item_id',
+      'ads/accounts/:account_id/media_creatives',
+      'ads/accounts/:account_id/media_creatives/:id',
       'ads/accounts/:account_id/promotable_users',
       'ads/accounts/:account_id/promoted_accounts',
       'ads/accounts/:account_id/promoted_tweets',
@@ -140,9 +143,11 @@ class Codebird
       'ads/iab_categories',
       'ads/insights/accounts/:account_id',
       'ads/insights/accounts/:account_id/available_audiences',
+      'ads/insights/keywords/search',
       'ads/line_items/placements',
       'ads/sandbox/accounts',
       'ads/sandbox/accounts/:account_id',
+      'ads/sandbox/accounts/:account_id/account_media',
       'ads/sandbox/accounts/:account_id/app_event_provider_configurations',
       'ads/sandbox/accounts/:account_id/app_event_provider_configurations/:id',
       'ads/sandbox/accounts/:account_id/app_event_tags',
@@ -170,6 +175,8 @@ class Codebird
       'ads/sandbox/accounts/:account_id/funding_instruments/:id',
       'ads/sandbox/accounts/:account_id/line_items',
       'ads/sandbox/accounts/:account_id/line_items/:line_item_id',
+      'ads/sandbox/accounts/:account_id/media_creatives',
+      'ads/sandbox/accounts/:account_id/media_creatives/:id',
       'ads/sandbox/accounts/:account_id/promotable_users',
       'ads/sandbox/accounts/:account_id/promoted_accounts',
       'ads/sandbox/accounts/:account_id/promoted_tweets',
@@ -192,6 +199,7 @@ class Codebird
       'ads/sandbox/iab_categories',
       'ads/sandbox/insights/accounts/:account_id',
       'ads/sandbox/insights/accounts/:account_id/available_audiences',
+      'ads/sandbox/insights/keywords/search',
       'ads/sandbox/line_items/placements',
       'ads/sandbox/stats/accounts/:account_id',
       'ads/sandbox/stats/accounts/:account_id/campaigns',
@@ -325,6 +333,7 @@ class Codebird
       'account/update_profile_banner',
       'account/update_profile_colors',
       'account/update_profile_image',
+      'ads/accounts/:account_id/account_media',
       'ads/accounts/:account_id/app_lists',
       'ads/accounts/:account_id/campaigns',
       'ads/accounts/:account_id/cards/app_download',
@@ -335,6 +344,7 @@ class Codebird
       'ads/accounts/:account_id/cards/video_conversation',
       'ads/accounts/:account_id/cards/website',
       'ads/accounts/:account_id/line_items',
+      'ads/accounts/:account_id/media_creatives',
       'ads/accounts/:account_id/promoted_accounts',
       'ads/accounts/:account_id/promoted_tweets',
       'ads/accounts/:account_id/tailored_audience_changes',
@@ -345,6 +355,9 @@ class Codebird
       'ads/accounts/:account_id/web_event_tags',
       'ads/batch/accounts/:account_id/campaigns',
       'ads/batch/accounts/:account_id/line_items',
+      'ads/batch/accounts/:account_id/tailored_audiences',
+      'ads/batch/accounts/:account_id/targeting_criteria',
+      'ads/sandbox/accounts/:account_id/account_media',
       'ads/sandbox/accounts/:account_id/app_lists',
       'ads/sandbox/accounts/:account_id/campaigns',
       'ads/sandbox/accounts/:account_id/cards/app_download',
@@ -355,6 +368,7 @@ class Codebird
       'ads/sandbox/accounts/:account_id/cards/video_conversation',
       'ads/sandbox/accounts/:account_id/cards/website',
       'ads/sandbox/accounts/:account_id/line_items',
+      'ads/sandbox/accounts/:account_id/media_creatives',
       'ads/sandbox/accounts/:account_id/promoted_accounts',
       'ads/sandbox/accounts/:account_id/promoted_tweets',
       'ads/sandbox/accounts/:account_id/tailored_audience_changes',
@@ -365,6 +379,8 @@ class Codebird
       'ads/sandbox/accounts/:account_id/web_event_tags',
       'ads/sandbox/batch/accounts/:account_id/campaigns',
       'ads/sandbox/batch/accounts/:account_id/line_items',
+      'ads/sandbox/batch/accounts/:account_id/tailored_audiences',
+      'ads/sandbox/batch/accounts/:account_id/targeting_criteria',
       'blocks/create',
       'blocks/destroy',
       'collections/create',
@@ -403,6 +419,7 @@ class Codebird
       'statuses/filter',
       'statuses/lookup',
       'statuses/retweet/:id',
+      'statuses/unretweet/:id',
       'statuses/update',
       'statuses/update_with_media', // deprecated, use media/upload
       'ton/bucket/:bucket',
@@ -451,6 +468,7 @@ class Codebird
       'ads/accounts/:account_id/cards/video_conversation/:card_id',
       'ads/accounts/:account_id/cards/website/:card_id',
       'ads/accounts/:account_id/line_items/:line_item_id',
+      'ads/accounts/:account_id/media_creatives/:id',
       'ads/accounts/:account_id/promoted_tweets/:id',
       'ads/accounts/:account_id/tailored_audiences/:id',
       'ads/accounts/:account_id/targeting_criteria/:id',
@@ -465,6 +483,7 @@ class Codebird
       'ads/sandbox/accounts/:account_id/cards/video_conversation/:card_id',
       'ads/sandbox/accounts/:account_id/cards/website/:card_id',
       'ads/sandbox/accounts/:account_id/line_items/:line_item_id',
+      'ads/sandbox/accounts/:account_id/media_creatives/:id',
       'ads/sandbox/accounts/:account_id/promoted_tweets/:id',
       'ads/sandbox/accounts/:account_id/tailored_audiences/:id',
       'ads/sandbox/accounts/:account_id/targeting_criteria/:id',
@@ -487,6 +506,11 @@ class Codebird
   ];
 
   /**
+   * The current Codebird version
+   */
+  protected static $_version = '3.1.0';
+
+  /**
    * The Request or access token. Used to sign requests
    */
   protected $_oauth_token = null;
@@ -505,11 +529,6 @@ class Codebird
    * The callback to call with any new streaming messages
    */
   protected $_streaming_callback = null;
-
-  /**
-   * The current Codebird version
-   */
-  protected $_version = '3.0.0-dev';
 
   /**
    * Auto-detect cURL absence
@@ -588,7 +607,7 @@ class Codebird
    */
   public function getVersion()
   {
-    return $this->_version;
+    return self::$_version;
   }
 
   /**
@@ -624,6 +643,7 @@ class Codebird
    * @param bool $use_curl Request uses cURL or not
    *
    * @return void
+   * @throws \Exception
    */
   public function setUseCurl($use_curl)
   {
@@ -643,6 +663,9 @@ class Codebird
    */
   public function setTimeout($timeout)
   {
+    if ($timeout < 0) {
+      $timeout = 0;
+    }
     $this->_timeouts['request'] = (int) $timeout;
   }
 
@@ -655,6 +678,9 @@ class Codebird
    */
   public function setConnectionTimeout($timeout)
   {
+    if ($timeout < 0) {
+      $timeout = 0;
+    }
     $this->_timeouts['connect'] = (int) $timeout;
   }
 
@@ -667,6 +693,9 @@ class Codebird
    */
   public function setRemoteDownloadTimeout($timeout)
   {
+    if ($timeout < 0) {
+      $timeout = 0;
+    }
     $this->_timeouts['remote'] = (int) $timeout;
   }
 
@@ -676,6 +705,7 @@ class Codebird
    * @param int $return_format One of these:
    *                           CODEBIRD_RETURNFORMAT_OBJECT (default)
    *                           CODEBIRD_RETURNFORMAT_ARRAY
+   *                           CODEBIRD_RETURNFORMAT_JSON
    *
    * @return void
    */
@@ -687,15 +717,31 @@ class Codebird
   /**
    * Sets the proxy
    *
-   * @param string $host Proxy host
-   * @param int    $port Proxy port
+   * @param string       $host Proxy host
+   * @param int          $port Proxy port
+   * @param int optional $type Proxy type, defaults to HTTP
    *
    * @return void
+   * @throws \Exception
    */
-  public function setProxy($host, $port)
+  public function setProxy($host, $port, $type = CURLPROXY_HTTP)
   {
+    static $types_str = [
+      'HTTP', 'SOCKS4', 'SOCKS5', 'SOCKS4A', 'SOCKS5_HOSTNAME'
+    ];
+    $types = [];
+    foreach ($types_str as $type_str) {
+      if (defined('CURLPROXY_' . $type_str)) {
+        $types[] = constant('CURLPROXY_' . $type_str);
+      }
+    }
+    if (! in_array($type, $types)) {
+      throw new \Exception('Invalid proxy type specified.');
+    }
+
     $this->_proxy['host'] = $host;
-    $this->_proxy['port'] = $port;
+    $this->_proxy['port'] = (int) $port;
+    $this->_proxy['type'] = $type;
   }
 
   /**
@@ -716,6 +762,7 @@ class Codebird
    * @param callable $callback The streaming callback
    *
    * @return void
+   * @throws \Exception
    */
   public function setStreamingCallback($callback)
   {
@@ -726,7 +773,7 @@ class Codebird
   }
 
   /**
-   * Get allowed API methods, sorted by GET or POST
+   * Get allowed API methods, sorted by HTTP method
    * Watch out for multiple-method API methods!
    *
    * @return array $apimethods
@@ -747,6 +794,14 @@ class Codebird
 
   public function __call($function, $params)
   {
+    // cURL function?
+    if (substr($function, 0, 6) === '_curl_'
+      || $function === '_time'
+      || $function === '_microtime'
+    ) {
+      return call_user_func_array(substr($function, 1), $params);
+    }
+
     // parse parameters
     $apiparams = $this->_parseApiParams($params);
 
@@ -911,6 +966,7 @@ class Codebird
    * @param array byref $apiparams The parameters to send along
    *
    * @return string[] (string method, string method_template)
+   * @throws \Exception
    */
   protected function _mapFnInlineParams($method, &$apiparams)
   {
@@ -940,6 +996,24 @@ class Codebird
     return [$method, $method_template];
   }
 
+  /**
+   * Avoids any JSON_BIGINT_AS_STRING errors
+   *
+   * @param string       $data       JSON data to decode
+   * @param int optional $need_array Decode as array, otherwise as object
+   *
+   * @return array|object The decoded object
+   */
+  protected function _json_decode($data, $need_array = false)
+  {
+    if (!(defined('JSON_C_VERSION') && PHP_INT_SIZE > 4)) {
+      return json_decode($data, $need_array, 512, JSON_BIGINT_AS_STRING);
+    }
+    $max_int_length = strlen((string) PHP_INT_MAX) - 1;
+    $json_without_bigints = preg_replace('/:\s*(-?\d{'.$max_int_length.',})/', ': "$1"', $data);
+    $obj = json_decode($json_without_bigints, $need_array);
+    return $obj;
+  }
 
   /**
    * Uncommon API methods
@@ -953,6 +1027,7 @@ class Codebird
    * @param optional string $type        'authenticate' or 'authorize', to avoid duplicate code
    *
    * @return string The OAuth authenticate/authorize URL
+   * @throws \Exception
    */
   public function oauth_authenticate($force_login = NULL, $screen_name = NULL, $type = 'authenticate')
   {
@@ -1003,29 +1078,29 @@ class Codebird
    * @param string $url the URL for the curl initialization
    * @return resource handle
    */
-  protected function getCurlInitialization($url)
+  protected function _getCurlInitialization($url)
   {
-    $connection = curl_init($url);
+    $connection = $this->_curl_init($url);
 
-    curl_setopt($connection, CURLOPT_RETURNTRANSFER, 1);
-    curl_setopt($connection, CURLOPT_FOLLOWLOCATION, 0);
-    curl_setopt($connection, CURLOPT_HEADER, 1);
-    curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, 1);
-    curl_setopt($connection, CURLOPT_SSL_VERIFYHOST, 2);
-    curl_setopt($connection, CURLOPT_CAINFO, __DIR__ . '/cacert.pem');
-    curl_setopt(
+    $this->_curl_setopt($connection, CURLOPT_RETURNTRANSFER, 1);
+    $this->_curl_setopt($connection, CURLOPT_FOLLOWLOCATION, 0);
+    $this->_curl_setopt($connection, CURLOPT_HEADER, 1);
+    $this->_curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, 1);
+    $this->_curl_setopt($connection, CURLOPT_SSL_VERIFYHOST, 2);
+    $this->_curl_setopt($connection, CURLOPT_CAINFO, __DIR__ . '/cacert.pem');
+    $this->_curl_setopt(
       $connection, CURLOPT_USERAGENT,
       'codebird-php/' . $this->getVersion() . ' +https://github.com/jublonet/codebird-php'
     );
 
-    if ($this->hasProxy()) {
-      curl_setopt($connection, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
-      curl_setopt($connection, CURLOPT_PROXY, $this->getProxyHost());
-      curl_setopt($connection, CURLOPT_PROXYPORT, $this->getProxyPort());
+    if ($this->_hasProxy()) {
+      $this->_curl_setopt($connection, CURLOPT_PROXYTYPE, $this->_getProxyType());
+      $this->_curl_setopt($connection, CURLOPT_PROXY, $this->_getProxyHost());
+      $this->_curl_setopt($connection, CURLOPT_PROXYPORT, $this->_getProxyPort());
 
-      if ($this->hasProxyAuthentication()) {
-        curl_setopt($connection, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
-        curl_setopt($connection, CURLOPT_PROXYUSERPWD, $this->getProxyAuthentication());
+      if ($this->_getProxyAuthentication()) {
+        $this->_curl_setopt($connection, CURLOPT_PROXYAUTH, CURLAUTH_BASIC);
+        $this->_curl_setopt($connection, CURLOPT_PROXYUSERPWD, $this->_getProxyAuthentication());
       }
     }
 
@@ -1041,7 +1116,7 @@ class Codebird
    *
    * @return array the read data
    */
-  protected function getNoCurlInitialization($url, $contextOptions, $hostname = '')
+  protected function _getNoCurlInitialization($url, $contextOptions, $hostname = '')
   {
     $httpOptions = [];
 
@@ -1056,13 +1131,13 @@ class Codebird
       'peer_name'    => $hostname
     ];
 
-    if ($this->hasProxy()) {
+    if ($this->_hasProxy()) {
       $httpOptions['request_fulluri'] = true;
-      $httpOptions['proxy'] = $this->getProxyHost() . ':' . $this->getProxyPort();
+      $httpOptions['proxy'] = $this->_getProxyHost() . ':' . $this->_getProxyPort();
 
-      if ($this->hasProxyAuthentication()) {
+      if ($this->_getProxyAuthentication()) {
         $httpOptions['header'][] =
-          'Proxy-Authorization: Basic ' . base64_encode($this->getProxyAuthentication());
+          'Proxy-Authorization: Basic ' . base64_encode($this->_getProxyAuthentication());
       }
     }
 
@@ -1090,26 +1165,9 @@ class Codebird
     ];
   }
 
-  protected function hasProxy()
+  protected function _hasProxy()
   {
-    if ($this->getProxyHost() === null) {
-      return false;
-    }
-
-    if ($this->getProxyPort() === null) {
-      return false;
-    }
-
-    return true;
-  }
-
-  protected function hasProxyAuthentication()
-  {
-    if ($this->getProxyAuthentication() === null) {
-      return false;
-    }
-
-    return true;
+    return isset($this->_proxy['host']) || isset($this->_proxy['port']);
   }
 
   /**
@@ -1117,9 +1175,9 @@ class Codebird
    *
    * @return string The proxy host
    */
-  protected function getProxyHost()
+  protected function _getProxyHost()
   {
-    return $this->getProxyData('host');
+    return $this->_getProxyData('host');
   }
 
   /**
@@ -1127,9 +1185,9 @@ class Codebird
    *
    * @return string The proxy port
    */
-  protected function getProxyPort()
+  protected function _getProxyPort()
   {
-    return $this->getProxyData('port');
+    return $this->_getProxyData('port');
   }
 
   /**
@@ -1137,27 +1195,36 @@ class Codebird
    *
    * @return string The proxy authentication
    */
-  protected function getProxyAuthentication()
+  protected function _getProxyAuthentication()
   {
-    return $this->getProxyData('authentication');
+    return $this->_getProxyData('authentication');
   }
 
   /**
+   * Gets the proxy type
+   *
+   * @return string The proxy type
+   */
+  protected function _getProxyType()
+  {
+    return $this->_getProxyData('type');
+  }
+
+  /**
+   * Gets data from the proxy configuration
+   *
    * @param string $name
    */
-  private function getProxyData($name)
+  private function _getProxyData($name)
   {
-    if (empty($this->_proxy[$name])) {
-      return null;
-    }
-
-    return $this->_proxy[$name];
+    return empty($this->_proxy[$name]) ? null : $this->_proxy[$name];
   }
 
   /**
    * Gets the OAuth bearer token, using cURL
    *
    * @return string The OAuth bearer token
+   * @throws \Exception
    */
 
   protected function _oauth2TokenCurl()
@@ -1169,26 +1236,26 @@ class Codebird
       'grant_type' => 'client_credentials'
     ];
     $url        = self::$_endpoints['oauth'] . 'oauth2/token';
-    $connection = $this->getCurlInitialization($url);
-    curl_setopt($connection, CURLOPT_POST, 1);
-    curl_setopt($connection, CURLOPT_POSTFIELDS, $post_fields);
+    $connection = $this->_getCurlInitialization($url);
+    $this->_curl_setopt($connection, CURLOPT_POST, 1);
+    $this->_curl_setopt($connection, CURLOPT_POSTFIELDS, $post_fields);
 
-    curl_setopt($connection, CURLOPT_USERPWD, self::$_consumer_key . ':' . self::$_consumer_secret);
-    curl_setopt($connection, CURLOPT_HTTPHEADER, [
+    $this->_curl_setopt($connection, CURLOPT_USERPWD, self::$_consumer_key . ':' . self::$_consumer_secret);
+    $this->_curl_setopt($connection, CURLOPT_HTTPHEADER, [
       'Expect:'
     ]);
-    $result = curl_exec($connection);
+    $result = $this->_curl_exec($connection);
 
     // catch request errors
     if ($result === false) {
-      throw new \Exception('Request error for bearer token: ' . curl_error($connection));
+      throw new \Exception('Request error for bearer token: ' . $this->_curl_error($connection));
     }
 
     // certificate validation results
-    $validation_result = curl_errno($connection);
+    $validation_result = $this->_curl_errno($connection);
     $this->_validateSslCertificate($validation_result);
 
-    $httpstatus = curl_getinfo($connection, CURLINFO_HTTP_CODE);
+    $httpstatus = $this->_curl_getinfo($connection, CURLINFO_HTTP_CODE);
     $reply = $this->_parseBearerReply($result, $httpstatus);
     return $reply;
   }
@@ -1197,6 +1264,7 @@ class Codebird
    * Gets the OAuth bearer token, without cURL
    *
    * @return string The OAuth bearer token
+   * @throws \Exception
    */
 
   protected function _oauth2TokenNoCurl()
@@ -1228,7 +1296,7 @@ class Codebird
         'ignore_errors'    => true
       ]
     ];
-    list($reply, $headers) = $this->getNoCurlInitialization($url, $contextOptions, $hostname);
+    list($reply, $headers) = $this->_getNoCurlInitialization($url, $contextOptions, $hostname);
     $result  = '';
     foreach ($headers as $header) {
       $result .= $header . "\r\n";
@@ -1286,7 +1354,7 @@ class Codebird
         break;
       case CODEBIRD_RETURNFORMAT_JSON:
         if ($httpstatus === 200) {
-          $parsed = json_decode($reply, false, 512, JSON_BIGINT_AS_STRING);
+          $parsed = $this->_json_decode($reply);
           self::setBearerToken($parsed->access_token);
         }
         break;
@@ -1330,6 +1398,7 @@ class Codebird
    * @param int $validation_result The curl error number
    *
    * @return void
+   * @throws \Exception
    */
   protected function _validateSslCertificate($validation_result)
   {
@@ -1395,6 +1464,7 @@ class Codebird
    * @param string $data The data to calculate the hash from
    *
    * @return string The hash
+   * @throws \Exception
    */
   protected function _sha1($data)
   {
@@ -1423,13 +1493,14 @@ class Codebird
    * @param int optional $length The length of the string to generate
    *
    * @return string The random string
+   * @throws \Exception
    */
   protected function _nonce($length = 8)
   {
     if ($length < 1) {
       throw new \Exception('Invalid nonce length.');
     }
-    return substr(md5(microtime(true)), 0, $length);
+    return substr(md5($this->_microtime(true)), 0, $length);
   }
 
   /**
@@ -1466,11 +1537,11 @@ class Codebird
    * @param string          $httpmethod   Usually either 'GET' or 'POST' or 'DELETE'
    * @param string          $method       The API method to call
    * @param array  optional $params       The API call parameters, associative
-   * @param bool   optional append_to_get Whether to append the OAuth params to GET
    *
    * @return string Authorization HTTP header
+   * @throws \Exception
    */
-  protected function _sign($httpmethod, $method, $params = [], $append_to_get = false)
+  protected function _sign($httpmethod, $method, $params = [])
   {
     if (self::$_consumer_key === null) {
       throw new \Exception('To generate a signature, the consumer key must be set.');
@@ -1480,7 +1551,7 @@ class Codebird
       [
         'oauth_consumer_key'     => self::$_consumer_key,
         'oauth_version'          => '1.0',
-        'oauth_timestamp'        => time(),
+        'oauth_timestamp'        => $this->_time(),
         'oauth_nonce'            => $this->_nonce(),
         'oauth_signature_method' => 'HMAC-SHA1'
       ]
@@ -1499,17 +1570,10 @@ class Codebird
 
     $signature = $this->_getSignature($httpmethod, $method, $sign_base_params);
 
-    $params = $append_to_get ? $sign_base_params : $oauth_params;
+    $params = $oauth_params;
     $params['oauth_signature'] = $signature;
 
     ksort($params);
-    if ($append_to_get) {
-      $authorization = '';
-      foreach ($params as $key => $value) {
-        $authorization .= $key . '="' . $this->_url($value) . '", ';
-      }
-      return substr($authorization, 0, -1);
-    }
     $authorization = 'OAuth ';
     foreach ($params as $key => $value) {
       $authorization .= $key . "=\"" . $this->_url($value) . "\", ";
@@ -1535,95 +1599,89 @@ class Codebird
     $apimethods = $this->getApiMethods();
 
     // multi-HTTP method API methods
-    switch ($method) {
-      case 'ads/accounts/:account_id/campaigns':
-      case 'ads/sandbox/accounts/:account_id/campaigns':
-        if (isset($params['funding_instrument_id'])) {
-          return 'POST';
+    // parameter-based detection
+    $httpmethods_by_param = [
+      'POST' => [
+        'campaign_id' => [
+          'ads/accounts/:account_id/line_items',
+          'ads/sandbox/accounts/:account_id/line_items'
+        ],
+        'media_id' => [
+          'ads/accounts/:account_id/account_media',
+          'ads/sandbox/accounts/:account_id/account_media'
+        ],
+        'name' => [
+          'ads/accounts/:account_id/app_lists',
+          'ads/accounts/:account_id/campaigns',
+          'ads/accounts/:account_id/cards/app_download',
+          'ads/accounts/:account_id/cards/image_app_download',
+          'ads/accounts/:account_id/cards/image_conversation',
+          'ads/accounts/:account_id/cards/lead_gen',
+          'ads/accounts/:account_id/cards/video_app_download',
+          'ads/accounts/:account_id/cards/video_conversation',
+          'ads/accounts/:account_id/cards/website',
+          'ads/accounts/:account_id/tailored_audiences',
+          'ads/accounts/:account_id/web_event_tags',
+          'ads/sandbox/accounts/:account_id/app_lists',
+          'ads/sandbox/accounts/:account_id/campaigns',
+          'ads/sandbox/accounts/:account_id/cards/app_download',
+          'ads/sandbox/accounts/:account_id/cards/image_app_download',
+          'ads/sandbox/accounts/:account_id/cards/image_conversation',
+          'ads/sandbox/accounts/:account_id/cards/lead_gen',
+          'ads/sandbox/accounts/:account_id/cards/video_app_download',
+          'ads/sandbox/accounts/:account_id/cards/video_conversation',
+          'ads/sandbox/accounts/:account_id/cards/website',
+          'ads/sandbox/accounts/:account_id/tailored_audiences',
+          'ads/sandbox/accounts/:account_id/web_event_tags'
+        ],
+        'tailored_audience_id' => [
+          'ads/accounts/:account_id/tailored_audience_changes',
+          'ads/sandbox/accounts/:account_id/tailored_audience_changes'
+        ],
+        'targeting_value' => [
+          'ads/accounts/:account_id/targeting_criteria',
+          'ads/sandbox/accounts/:account_id/targeting_criteria'
+        ],
+        'tweet_ids' => [
+          'ads/accounts/:account_id/promoted_tweets',
+          'ads/sandbox/accounts/:account_id/promoted_tweets'
+        ],
+        'user_id' => [
+          'ads/accounts/:account_id/promoted_accounts',
+          'ads/sandbox/accounts/:account_id/promoted_accounts'
+        ],
+        'video_media_id' => [
+          'ads/accounts/:account_id/videos',
+          'ads/sandbox/accounts/:account_id/videos'
+        ]
+      ],
+      'PUT' => [
+        'name' => [
+          'ads/accounts/:account_id/cards/image_conversation/:card_id',
+          'ads/accounts/:account_id/cards/video_conversation/:card_id',
+          'ads/accounts/:account_id/cards/website/:card_id',
+          'ads/sandbox/accounts/:account_id/cards/image_conversation/:card_id',
+          'ads/sandbox/accounts/:account_id/cards/video_conversation/:card_id',
+          'ads/sandbox/accounts/:account_id/cards/website/:card_id'
+        ]
+      ]
+    ];
+    foreach ($httpmethods_by_param as $httpmethod => $methods_by_param) {
+      foreach ($methods_by_param as $param => $methods) {
+        if (in_array($method, $methods) && isset($params[$param])) {
+          return $httpmethod;
         }
-        break;
-      case 'ads/accounts/:account_id/line_items':
-      case 'ads/sandbox/accounts/:account_id/line_items':
-        if (isset($params['campaign_id'])) {
-          return 'POST';
-        }
-        break;
-      case 'ads/accounts/:account_id/targeting_criteria':
-      case 'ads/sandbox/accounts/:account_id/targeting_criteria':
-        if (isset($params['targeting_value'])) {
-          return 'POST';
-        }
-        break;
-      case 'ads/accounts/:account_id/app_lists':
-      case 'ads/accounts/:account_id/campaigns':
-      case 'ads/accounts/:account_id/cards/app_download':
-      case 'ads/accounts/:account_id/cards/image_app_download':
-      case 'ads/accounts/:account_id/cards/image_conversion':
-      case 'ads/accounts/:account_id/cards/lead_gen':
-      case 'ads/accounts/:account_id/cards/video_app_download':
-      case 'ads/accounts/:account_id/cards/video_conversation':
-      case 'ads/accounts/:account_id/cards/website':
-      case 'ads/accounts/:account_id/tailored_audiences':
-      case 'ads/accounts/:account_id/web_event_tags':
-      case 'ads/sandbox/accounts/:account_id/app_lists':
-      case 'ads/sandbox/accounts/:account_id/campaigns':
-      case 'ads/sandbox/accounts/:account_id/cards/app_download':
-      case 'ads/sandbox/accounts/:account_id/cards/image_app_download':
-      case 'ads/sandbox/accounts/:account_id/cards/image_conversion':
-      case 'ads/sandbox/accounts/:account_id/cards/lead_gen':
-      case 'ads/sandbox/accounts/:account_id/cards/video_app_download':
-      case 'ads/sandbox/accounts/:account_id/cards/video_conversation':
-      case 'ads/sandbox/accounts/:account_id/cards/website':
-      case 'ads/sandbox/accounts/:account_id/tailored_audiences':
-      case 'ads/sandbox/accounts/:account_id/web_event_tags':
-        if (isset($params['name'])) {
-          return 'POST';
-        }
-        break;
-      case 'ads/accounts/:account_id/promoted_accounts':
-      case 'ads/sandbox/accounts/:account_id/promoted_accounts':
-        if (isset($params['user_id'])) {
-          return 'POST';
-        }
-        break;
-      case 'ads/accounts/:account_id/promoted_tweets':
-      case 'ads/sandbox/accounts/:account_id/promoted_tweets':
-        if (isset($params['tweet_ids'])) {
-          return 'POST';
-        }
-        break;
-      case 'ads/accounts/:account_id/videos':
-      case 'ads/sandbox/accounts/:account_id/videos':
-        if (isset($params['video_media_id'])) {
-          return 'POST';
-        }
-        break;
-      case 'ads/accounts/:account_id/tailored_audience_changes':
-      case 'ads/sandbox/accounts/:account_id/tailored_audience_changes':
-        if (isset($params['tailored_audience_id'])) {
-          return 'POST';
-        }
-        break;
-      case 'ads/accounts/:account_id/cards/image_conversation/:card_id':
-      case 'ads/accounts/:account_id/cards/video_conversation/:card_id':
-      case 'ads/accounts/:account_id/cards/website/:card_id':
-      case 'ads/sandbox/accounts/:account_id/cards/image_conversation/:card_id':
-      case 'ads/sandbox/accounts/:account_id/cards/video_conversation/:card_id':
-      case 'ads/sandbox/accounts/:account_id/cards/website/:card_id':
-        if (isset($params['name'])) {
-          return 'PUT';
-        }
-        break;
-      default:
-        // prefer POST and PUT if parameters are set
-        if (count($params) > 0) {
-          if (isset($apimethods['POST'][$method])) {
-            return 'POST';
-          }
-          if (isset($apimethods['PUT'][$method])) {
-            return 'PUT';
-          }
-        }
+      }
+    }
+
+    // prefer POST and PUT if parameters are set
+    if (count($params) > 0) {
+      if (in_array($method, $apimethods['POST'])) {
+        return 'POST';
+      }
+      if (in_array($method, $apimethods['PUT'])) {
+        return 'PUT';
+      }
     }
 
     foreach ($apimethods as $httpmethod => $methods) {
@@ -1665,6 +1723,7 @@ class Codebird
    * @param array  $params          The parameters to send along
    *
    * @return string request
+   * @throws \Exception
    */
   protected function _getMultipartRequestFromParams($method_template, $border, $params)
   {
@@ -1700,7 +1759,9 @@ class Codebird
    * @return mixed
    */
   protected function _checkForFiles($method_template, $key, $value) {
-    if (!in_array($key, self::$_possible_files[$method_template])) {
+    if (!array_key_exists($method_template, self::$_possible_files)
+      || !in_array($key, self::$_possible_files[$method_template])
+    ) {
       return false;
     }
     $data = $this->_buildBinaryBody($value);
@@ -1777,27 +1838,31 @@ class Codebird
    * @param string $url The URL to download from
    *
    * @return mixed The file contents or FALSE
+   * @throws \Exception
    */
   protected function _fetchRemoteFile($url)
   {
     // try to fetch the file
     if ($this->_use_curl) {
-      $connection = $this->getCurlInitialization($url);
-      curl_setopt($connection, CURLOPT_RETURNTRANSFER, 1);
-      curl_setopt($connection, CURLOPT_HEADER, 0);
+      $connection = $this->_getCurlInitialization($url);
+      $this->_curl_setopt($connection, CURLOPT_RETURNTRANSFER, 1);
+      $this->_curl_setopt($connection, CURLOPT_HEADER, 0);
       // no SSL validation for downloading media
-      curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, 1);
-      curl_setopt($connection, CURLOPT_SSL_VERIFYHOST, 2);
-      curl_setopt($connection, CURLOPT_TIMEOUT_MS, $this->_timeouts['remote']);
-      curl_setopt($connection, CURLOPT_CONNECTTIMEOUT_MS, $this->_timeouts['remote'] / 2);
+      $this->_curl_setopt($connection, CURLOPT_SSL_VERIFYPEER, 1);
+      $this->_curl_setopt($connection, CURLOPT_SSL_VERIFYHOST, 2);
+      $this->_curl_setopt($connection, CURLOPT_TIMEOUT_MS, $this->_timeouts['remote']);
+      $this->_curl_setopt($connection, CURLOPT_CONNECTTIMEOUT_MS, $this->_timeouts['remote'] / 2);
       // find files that have been redirected
-      curl_setopt($connection, CURLOPT_FOLLOWLOCATION, true);
+      $this->_curl_setopt($connection, CURLOPT_FOLLOWLOCATION, true);
       // process compressed images
-      curl_setopt($connection, CURLOPT_ENCODING, 'gzip,deflate,sdch');
-      $result = curl_exec($connection);
-      if ($result !== false) {
+      $this->_curl_setopt($connection, CURLOPT_ENCODING, 'gzip,deflate,sdch');
+      $result = $this->_curl_exec($connection);
+      if ($result !== false
+        && $this->_curl_getinfo($connection, CURLINFO_HTTP_CODE) === 200
+      ) {
         return $result;
       }
+      throw new \Exception('Downloading a remote media file failed.');
       return false;
     }
     // no cURL
@@ -1811,10 +1876,13 @@ class Codebird
         'verify_peer'  => false
       ]
     ];
-    list($result) = $this->getNoCurlInitialization($url, $contextOptions);
-    if ($result !== false) {
+    list($result, $headers) = $this->_getNoCurlInitialization($url, $contextOptions);
+    if ($result !== false
+      && preg_match('/^HTTP\/\d\.\d 200 OK$/', $headers[0])
+    ) {
       return $result;
     }
+    throw new \Exception('Downloading a remote media file failed.');
     return false;
   }
 
@@ -1926,6 +1994,7 @@ class Codebird
    * @param bool   optional $app_only_auth   Whether to use app-only bearer authentication
    *
    * @return string The API reply, encoded in the set return_format
+   * @throws \Exception
    */
 
   protected function _callApi($httpmethod, $method, $method_template, $params = [], $multipart = false, $app_only_auth = false)
@@ -1958,6 +2027,7 @@ class Codebird
    * @param bool   optional $app_only_auth Whether to use app-only bearer authentication
    *
    * @return string The API reply, encoded in the set return_format
+   * @throws \Exception
    */
 
   protected function _callApiCurl(
@@ -1969,34 +2039,34 @@ class Codebird
         $httpmethod, $method, $method_template, $params, $multipart, $app_only_auth
       );
 
-    $connection        = $this->getCurlInitialization($url);
+    $connection        = $this->_getCurlInitialization($url);
     $request_headers[] = 'Authorization: ' . $authorization;
     $request_headers[] = 'Expect:';
 
     if ($httpmethod !== 'GET') {
-      curl_setopt($connection, CURLOPT_POST, 1);
-      curl_setopt($connection, CURLOPT_POSTFIELDS, $params);
+      $this->_curl_setopt($connection, CURLOPT_POST, 1);
+      $this->_curl_setopt($connection, CURLOPT_POSTFIELDS, $params);
       if (in_array($httpmethod, ['POST', 'PUT', 'DELETE'])) {
-        curl_setopt($connection, CURLOPT_CUSTOMREQUEST, $httpmethod);
+        $this->_curl_setopt($connection, CURLOPT_CUSTOMREQUEST, $httpmethod);
       }
     }
 
-    curl_setopt($connection, CURLOPT_HTTPHEADER, $request_headers);
-    curl_setopt($connection, CURLOPT_TIMEOUT_MS, $this->_timeouts['request']);
-    curl_setopt($connection, CURLOPT_CONNECTTIMEOUT_MS, $this->_timeouts['connect']);
+    $this->_curl_setopt($connection, CURLOPT_HTTPHEADER, $request_headers);
+    $this->_curl_setopt($connection, CURLOPT_TIMEOUT_MS, $this->_timeouts['request']);
+    $this->_curl_setopt($connection, CURLOPT_CONNECTTIMEOUT_MS, $this->_timeouts['connect']);
 
-    $result = curl_exec($connection);
+    $result = $this->_curl_exec($connection);
 
     // catch request errors
     if ($result === false) {
-      throw new \Exception('Request error for API call: ' . curl_error($connection));
+      throw new \Exception('Request error for API call: ' . $this->_curl_error($connection));
     }
 
     // certificate validation results
-    $validation_result = curl_errno($connection);
+    $validation_result = $this->_curl_errno($connection);
     $this->_validateSslCertificate($validation_result);
 
-    $httpstatus            = curl_getinfo($connection, CURLINFO_HTTP_CODE);
+    $httpstatus            = $this->_curl_getinfo($connection, CURLINFO_HTTP_CODE);
     list($headers, $reply) = $this->_parseApiHeaders($result);
     // TON API & redirects
     $reply                 = $this->_parseApiReplyPrefillHeaders($headers, $reply);
@@ -2018,6 +2088,7 @@ class Codebird
    * @param bool   optional $app_only_auth   Whether to use app-only bearer authentication
    *
    * @return string The API reply, encoded in the set return_format
+   * @throws \Exception
    */
 
   protected function _callApiNoCurl(
@@ -2052,7 +2123,7 @@ class Codebird
       ]
     ];
 
-    list($reply, $headers) = $this->getNoCurlInitialization($url, $contextOptions, $hostname);
+    list($reply, $headers) = $this->_getNoCurlInitialization($url, $contextOptions, $hostname);
     $result  = '';
     foreach ($headers as $header) {
       $result .= $header . "\r\n";
@@ -2179,7 +2250,7 @@ class Codebird
         $reply->rate       = $rate;
         break;
       case CODEBIRD_RETURNFORMAT_JSON:
-        $reply             = json_decode($reply);
+        $reply             = $this->_json_decode($reply);
         $reply->httpstatus = $httpstatus;
         $reply->rate       = $rate;
         $reply             = json_encode($reply);
@@ -2192,6 +2263,7 @@ class Codebird
    * Get Bearer authorization string
    *
    * @return string authorization
+   * @throws \Exception
    */
   protected function _getBearerAuthorization()
   {
@@ -2253,6 +2325,7 @@ class Codebird
    * @param bool   optional $app_only_auth   Whether to use app-only bearer authentication
    *
    * @return void
+   * @throws \Exception
    */
 
   protected function _callApiStreaming(
@@ -2334,7 +2407,7 @@ class Codebird
 
     $signal_function = function_exists('pcntl_signal_dispatch');
     $data            = '';
-    $last_message    = time();
+    $last_message    = $this->_time();
     $message_length  = 0;
 
     while (!feof($connection)) {
@@ -2347,13 +2420,13 @@ class Codebird
       if (false === ($num_changed_streams = stream_select($connection_array, $write, $except, 0, 200000))) {
         break;
       } elseif ($num_changed_streams === 0) {
-        if (time() - $last_message >= 1) {
+        if ($this->_time() - $last_message >= 1) {
           // deliver empty message, allow callback to cancel stream
           $cancel_stream = $this->_deliverStreamingMessage(null);
           if ($cancel_stream) {
             break;
           }
-          $last_message = time();
+          $last_message = $this->_time();
         }
         continue;
       }
@@ -2405,7 +2478,7 @@ class Codebird
 
       $data           = '';
       $message_length = 0;
-      $last_message   = time();
+      $last_message   = $this->_time();
     }
 
     return;
@@ -2441,12 +2514,6 @@ class Codebird
       || $proxy_tester === 'http/1.1 200 connection established'
     ) {
       array_shift($reply);
-    } elseif (count($reply) > 2) {
-      $headers = array_shift($reply);
-      $reply = [
-        $headers,
-        implode("\r\n", $reply)
-      ];
     }
 
     $headers_array = explode("\r\n", $reply[0]);
@@ -2517,26 +2584,16 @@ class Codebird
           return new \stdClass;
       }
     }
-    if (! $parsed = json_decode($reply, $need_array, 512, JSON_BIGINT_AS_STRING)) {
+    if (! $parsed = $this->_json_decode($reply, $need_array)) {
       if ($reply) {
-        if (stripos($reply, '<' . '?xml version="1.0" encoding="UTF-8"?' . '>') === 0) {
-          // we received XML...
-          // since this only happens for errors,
-          // don't perform a full decoding
-          preg_match('/<request>(.*)<\/request>/', $reply, $request);
-          preg_match('/<error>(.*)<\/error>/', $reply, $error);
-          $parsed['request'] = htmlspecialchars_decode($request[1]);
-          $parsed['error'] = htmlspecialchars_decode($error[1]);
-        } else {
-          // assume query format
-          $reply = explode('&', $reply);
-          foreach ($reply as $element) {
-            if (stristr($element, '=')) {
-              list($key, $value) = explode('=', $element, 2);
-              $parsed[$key] = $value;
-            } else {
-              $parsed['message'] = $element;
-            }
+        // assume query format
+        $reply = explode('&', $reply);
+        foreach ($reply as $element) {
+          if (stristr($element, '=')) {
+            list($key, $value) = explode('=', $element, 2);
+            $parsed[$key] = $value;
+          } else {
+            $parsed['message'] = $element;
           }
         }
       }
