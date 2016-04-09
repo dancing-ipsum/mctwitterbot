@@ -7,3 +7,5 @@ In order to use this script you'll need to create a new Twitter application at [
 Inside of config.php be sure to set a password for tweet.php to prevent unauthorized access. For added security it's advised you don't host this script in a publicly accessible directory to begin with. In order to query this script you'll visit **tweet.php?password=yourpassword** and if the password is incorrect it won't tweet.
 
 If you are querying a MCPE server set the mcpe section in config.php to true. If you are querying a PC server set it to false.
+
+*To automate your Twitter account setup a cronjob and make it visit tweet.php?password=yourpassword at the interval you define.*
