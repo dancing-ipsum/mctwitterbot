@@ -9,3 +9,9 @@ Inside of config.php be sure to set a password for tweet.php to prevent unauthor
 If you are querying a MCPE server set the mcpe section in config.php to true. If you are querying a PC server set it to false.
 
 *To automate your Twitter account setup a cronjob and make it visit tweet.php?password=yourpassword at the interval you define.*
+
+## Acknowledgements
+
+[codebird-php](https://github.com/jublonet/codebird-php)
+
+[MCAPI](https://mcapi.ca/)
