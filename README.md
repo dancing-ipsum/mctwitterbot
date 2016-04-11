@@ -1,5 +1,5 @@
 # mctwitterbot
-[Tutorial](https://daltontastic.com/post/142551980581/tutorial-mctwitterbot)
+[Tutorial](http://daltontastic.com/post/142601548551/mctwitterbot)
 
 ## Acknowledgements
 
